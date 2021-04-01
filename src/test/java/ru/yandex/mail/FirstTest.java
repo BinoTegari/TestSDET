@@ -1,13 +1,16 @@
 package ru.yandex.mail;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FirstTest {
+public class FirstTest extends ChromeDriverSettings {
+
     @Test
     public void firstTest() {
-        System.setProperty("webdriver.chrome.driver","src/test/Libs/chromedriver.exe");
-        ChromeDriver driver = new ChromeDriver();
+
         driver.get("https://mail.yandex.ru/?noretpath=1");
+        String title = driver.getTitle();
+        Assert.assertEquals("Яндекс.Почта — бесплатная и надежная электронная почта", title);
     }
+
 }
