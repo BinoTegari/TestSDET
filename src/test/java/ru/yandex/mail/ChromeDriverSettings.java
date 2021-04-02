@@ -9,7 +9,9 @@ public class ChromeDriverSettings {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver","src/test/Libs/chromedriver.exe");
+        String windows = "chromedriver.exe";
+        String macOS = "chromedriverForMac";
+        System.setProperty("webdriver.chrome.driver","src/test/Libs/"+macOS);
         driver = new ChromeDriver();
     }
     @After
