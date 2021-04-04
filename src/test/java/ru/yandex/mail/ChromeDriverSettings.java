@@ -19,10 +19,10 @@ public class ChromeDriverSettings {
         driver = new ChromeDriver();
     }
 
-    @After
-    public void close() {
-        driver.quit();
-    }
+//    @After
+//    public void close() {
+//        driver.quit();
+//    }
 
     public static boolean isWindows() {
         String os = System.getProperty("os.name").toLowerCase();
