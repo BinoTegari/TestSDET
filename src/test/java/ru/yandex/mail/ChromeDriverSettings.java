@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ChromeDriverSettings {
     public ChromeDriver driver;
-
     @Before
     public void setup() {
         String currentOS = "";
