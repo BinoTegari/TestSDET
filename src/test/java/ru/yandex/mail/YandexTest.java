@@ -14,8 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class YandexTest extends ChromeDriverSettings {
-    private String login = "";
-    private String password = "";//Обратите внимание на пароль))
+    private String login = "none";
+    private String password = "none";//Обратите внимание на пароль))
     private String url = "https://mail.yandex.ru/?noretpath=1";
     YandexSignIn yandexSignIn = new YandexSignIn();
     @Test
