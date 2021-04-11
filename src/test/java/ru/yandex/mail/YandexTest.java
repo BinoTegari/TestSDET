@@ -6,15 +6,17 @@ import org.junit.Test;
 import pageObjects.LetterCheckWriteSend;
 import resourses.Base;
 
-public class YandexTest extends Base{
+public class YandexTest extends Base {
     Base base = new Base();
+
     @Before
-    public void Login(){
+    public void Login() {
         base.initializeDriver();
         base.user();
     }
+
     @Test
-    public void SortMAil(){
+    public void SortMail() {
         LetterCheckWriteSend LetterCheckWriteSend = new LetterCheckWriteSend(base.driver);
         LetterCheckWriteSend.getallelements();
         LetterCheckWriteSend.getSubjectFromLetter();

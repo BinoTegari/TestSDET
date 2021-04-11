@@ -10,35 +10,35 @@ public class UserLogIn {
     public WebDriver driver;
 
     By signIn = By.xpath("//*[@id=\"index-page-container\"]/div/div[2]/div/div/div[4]/a[2]");
-    By username =By.xpath("//*[@id=\"passp-field-login\"]");
+    By username = By.xpath("//*[@id=\"passp-field-login\"]");
     By nextButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div[1]/form/div[3]/button");
     By password = By.xpath("//*[@id=\"passp-field-passwd\"]");
     By submit = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button");
 
-    public UserLogIn(WebDriver driver){
+    public UserLogIn(WebDriver driver) {
         this.driver = driver;
     }
 
-    public WebElement signIn(){
+    public WebElement signIn() {
         return driver.findElement(signIn);
     }
 
-    public WebElement getusername(){
+    public WebElement getusername() {
         return driver.findElement(username);
     }
 
-    public WebElement nextButton(){
+    public WebElement nextButton() {
         return driver.findElement(nextButton);
     }
 
-    public WebElement password(){
+    public WebElement password() {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(password));
         driver.findElement(password).click();
         return driver.findElement(password);
     }
 
-    public WebElement submit(){
+    public WebElement submit() {
         return driver.findElement(submit);
     }
 }
