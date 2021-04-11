@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,7 +52,8 @@ public class LetterCheckWriteSend {
     public void getSubjectFromLetter(){
         getallelements();
         String elementsInPage = getallelements().getText();
-        Pattern pattern = Pattern.compile("^Simbirsoft Тестовое задание$");
+//        Pattern pattern = Pattern.compile("^([A-Z]{1}[a-z]{9} [А-Я]{1}[а-я]{7} [а-я]{7})$");
+        Pattern pattern = Pattern.compile("^([a-zа-яА-ЯA-Z0-9_ ]+)$");
         Matcher matcher = pattern.matcher(elementsInPage);
         int count = 0;
         while(matcher.find()){
