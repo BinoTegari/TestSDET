@@ -21,6 +21,7 @@ public class YandexTest extends Base {
         LetterCheckWriteSend.getallelements();
         LetterCheckWriteSend.getSubjectFromLetter();
     }
+
     @After
     public void close() {
         base.driver.quit();

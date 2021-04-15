@@ -8,8 +8,8 @@ public class Base {
     public WebDriver driver;
 
     private String login = "binotegari@yandex.ru";
-    private String pass = "IWantThisJob2021";
-    private String url = "https://mail.yandex.ru/?noretpath=1";
+    private String pass  = "IWantThisJob2021";
+    private String url   = "https://mail.yandex.ru/?noretpath=1";
 
     public void initializeDriver() {
         String currentOS = "";
@@ -18,7 +18,7 @@ public class Base {
         } else if (isMacOs()) {
             currentOS = "chromedriverForMac";
         }
-        System.setProperty("webdriver.chrome.driver", "src/test/Libs/" + currentOS);
+        System.setProperty("webdriver.chrome.driver" , "src/test/Libs/" + currentOS);
         driver = new ChromeDriver();
     }
 
