@@ -17,13 +17,13 @@ public class YandexTest extends Base {
 
     @Test
     public void SortMail() {
-        LetterCheckWriteSend LetterCheckWriteSend = new LetterCheckWriteSend(base.driver);
+        LetterCheckWriteSend LetterCheckWriteSend = new LetterCheckWriteSend(base.driver,base.properties);
         LetterCheckWriteSend.getallelements();
         LetterCheckWriteSend.getSubjectFromLetter();
     }
 
-    @After
-    public void close() {
-        base.driver.quit();
-    }
+//    @After
+//    public void close() {
+////        base.driver.quit();
+//    }
 }

@@ -1,15 +1,17 @@
 package resourses;
 
+import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.UserLogIn;
 
 public class Base {
     public WebDriver driver;
+    public Properties properties = new Properties();
 
-    private String login = "binotegari@yandex.ru";
-    private String pass  = "IWantThisJob2021";
-    private String url   = "https://mail.yandex.ru/?noretpath=1";
+    public String login =properties.getProperty("mailLogin");
+    public String password  = properties.getProperty("mailPassword");
+    public String url   = "https://mail.yandex.ru/?noretpath=1";
 
     public void initializeDriver() {
         String currentOS = "";
@@ -36,10 +38,10 @@ public class Base {
         driver.get(url);
         driver.manage().window().maximize();
         UserLogIn UserLogIn = new UserLogIn(driver);
-        UserLogIn.signIn().click();
+        UserLogIn.enterButton().click();
         UserLogIn.getusername().sendKeys(login);
-        UserLogIn.nextButton().click();
-        UserLogIn.password().sendKeys(pass);
+        UserLogIn.enterAfterLoginButton().click();
+        UserLogIn.password().sendKeys(password);
         UserLogIn.submit().click();
     }
 }
