@@ -10,10 +10,10 @@ public class UserLogIn {
     public WebDriver driver;
 
     By enterButton     = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[span[text()=\"Войти\"]]");
-    By username   = By.xpath("//*[@id=\"passp-field-login\"]");
+    By login   = By.xpath("//*[@id=\"passp-field-login\"]");
     By enterAfterLoginButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
     By password   = By.xpath("//*[@id=\"passp-field-passwd\"]");
-    By submit     = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/form/div[3]/button");
+    By enterAfterPasswordButton     = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
 
     public UserLogIn(WebDriver driver) {
         this.driver = driver;
@@ -23,8 +23,8 @@ public class UserLogIn {
         return driver.findElement(enterButton);
     }
 
-    public WebElement getusername() {
-        return driver.findElement(username);
+    public WebElement login() {
+        return driver.findElement(login);
     }
 
     public WebElement enterAfterLoginButton() {
@@ -38,7 +38,7 @@ public class UserLogIn {
         return driver.findElement(password);
     }
 
-    public WebElement submit() {
-        return driver.findElement(submit);
+    public WebElement enterAfterPasswordButton() {
+        return driver.findElement(enterAfterPasswordButton);
     }
 }

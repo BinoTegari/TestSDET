@@ -1,10 +1,9 @@
 package ru.yandex.mail;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pageObjects.LetterCheckWriteSend;
-import resourses.Base;
+import pageObjects.Letters;
+import resourсes.Base;
 
 public class YandexTest extends Base {
     Base base = new Base();
@@ -17,9 +16,9 @@ public class YandexTest extends Base {
 
     @Test
     public void SortMail() {
-        LetterCheckWriteSend LetterCheckWriteSend = new LetterCheckWriteSend(base.driver,base.properties);
-        LetterCheckWriteSend.getallelements();
-        LetterCheckWriteSend.getSubjectFromLetter();
+        Letters Letters = new Letters(base.driver);
+        Letters.getSubjectFromLetter();
+        Letters.setNewLetter();
     }
 
 //    @After
