@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 public final class ConfigureService {
-  private static final String           FILE_PATH  = "src/main/resources/config.properties";
-  private static       ConfigureService instance;
-  private              Properties       properties = new Properties();
+  private static final String FILE_PATH = "src/main/resources/config.properties";
+  private static ConfigureService instance;
+  private Properties properties = new Properties();
 
   // запрещаем прямое создание объекта
   private ConfigureService() {

@@ -1,5 +1,6 @@
-package ru.yandex.mail;
+package yandexTest;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pageObjects.Letters;
@@ -15,14 +16,14 @@ public class YandexTest extends Base {
     }
 
     @Test
-    public void SortMail() {
+    public void GetMailSubject() {
         Letters Letters = new Letters(base.driver);
         Letters.getSubjectFromLetter();
-        Letters.setNewLetter();
+        Letters.sendNewLetter();
     }
 
 //    @After
 //    public void close() {
-////        base.driver.quit();
+//        base.driver.quit();
 //    }
 }

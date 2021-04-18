@@ -1,19 +1,19 @@
 package resourсes;
 
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.UserLogIn;
 import services.ConfigureService;
 
 public class Base {
-  public WebDriver  driver;
+  public WebDriver driver;
   public Properties property;
 
   private String login;
   private String password;
   private String url;
+  private static String adress;
 
   public void initializeDriver() {
     String currentOS = "";
@@ -60,22 +60,10 @@ public class Base {
     this.url = property.getProperty("mailUrl");
     this.login = property.getProperty("mailLogin");
     this.password = property.getProperty("mailPassword");
-
+    adress = property.getProperty("mailAdress");
   }
 
-  public Properties getProperty() {
-    return property;
-  }
-
-  public String getLogin() {
-    return login;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public String getUrl() {
-    return url;
+  public static String getAdress() {
+    return adress;
   }
 }
