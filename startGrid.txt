@@ -1,0 +1,8 @@
+Run in terminal project
+
+1) 
+cd src\test\Libs
+java -jar selenium-server-standalone-3.141.59.jar -role hub
+2)
+cd src\test\Libs
+java -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://localhost:4444/grid/register -port 5556
