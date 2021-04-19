@@ -1,8 +1,11 @@
 package resourсes;
 
 import java.util.Properties;
+
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pageObjects.UserLogIn;
 import services.ConfigureService;
 
@@ -24,6 +27,10 @@ public class Base {
     }
     System.setProperty("webdriver.chrome.driver" , "src/test/Libs/" + currentOS);
     driver = new ChromeDriver();
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setPlatform(Platform.VISTA);//Grid воспринимает Windows-7 как Vista
+    capabilities.setBrowserName("firefox");
+    capabilities.setVersion("43");
   }
 
   public static boolean isWindows() {

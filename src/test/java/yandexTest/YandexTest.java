@@ -17,13 +17,15 @@ public class YandexTest extends Base {
 
     @Test
     public void GetMailSubject() {
-        Letters Letters = new Letters(base.driver);
-        Letters.getSubjectFromLetter();
-        Letters.sendNewLetter();
+        Letters letters = new Letters(base.driver);
+        letters.getSubjectFromLetter();
+        letters.sendNewLetter();
     }
 
-//    @After
-//    public void close() {
-//        base.driver.quit();
-//    }
+    @After
+    public void close() throws InterruptedException {
+        //Это только для визуальной оценки финала теста
+        Thread.sleep(2000);
+        base.driver.quit();
+    }
 }

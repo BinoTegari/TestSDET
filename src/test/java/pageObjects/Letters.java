@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Letters {
   public WebDriver driver;
-  String subjectTest = "Simbirsoft Тестовое задание. Перетятько";
+  String subjectTheme = "Simbirsoft Тестовое задание. Перетятько";
 
   By newLetter = By.xpath("//a[@class=\"mail-ComposeButton js-main-action-compose\"]");
   By sendAdress = By.xpath("//div[@class=\"ComposeRecipients-TopRow\"]//div/div[@class=\"composeYabbles\"]");
@@ -68,7 +68,7 @@ public class Letters {
     sendAdress().click();
     sendAdress().sendKeys(Base.getAdress());
     subject().click();
-    subject().sendKeys(subjectTest);
+    subject().sendKeys(subjectTheme);
     letterContent().click();
     letterContent().sendKeys(getSubjectFromLetter());
     sendButton().click();
