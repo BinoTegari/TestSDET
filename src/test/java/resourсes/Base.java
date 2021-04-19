@@ -1,11 +1,14 @@
 package resourсes;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
-import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObjects.UserLogIn;
 import services.ConfigureService;
 
@@ -19,18 +22,20 @@ public class Base {
   private static String adress;
 
   public void initializeDriver() {
-    String currentOS = "";
-    if (isWindows()) {
-      currentOS = "chromedriver.exe";
-    } else if (isMacOs()) {
-      currentOS = "chromedriverForMac";
+    try {
+      String currentOS = "";
+      if (isWindows()) {
+        currentOS = "chromedriver.exe";
+      } else if (isMacOs()) {
+        currentOS = "chromedriverForMac";
+      }
+      System.setProperty("webdriver.chrome.driver" , "src/test/Libs/" + currentOS);
+      ChromeOptions capabilities = new ChromeOptions();
+      capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR , UnexpectedAlertBehaviour.IGNORE);
+      driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub") , capabilities);
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
     }
-    System.setProperty("webdriver.chrome.driver" , "src/test/Libs/" + currentOS);
-    driver = new ChromeDriver();
-    DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setPlatform(Platform.VISTA);//Grid воспринимает Windows-7 как Vista
-    capabilities.setBrowserName("firefox");
-    capabilities.setVersion("43");
   }
 
   public static boolean isWindows() {
