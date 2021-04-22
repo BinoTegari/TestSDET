@@ -23,9 +23,7 @@ public class YandexTest extends Base {
     }
 
     @After
-    public void close() throws InterruptedException {
-        //Это только для визуальной оценки финала теста
-        Thread.sleep(2000);
+    public void close() {
         base.driver.quit();
     }
 }
