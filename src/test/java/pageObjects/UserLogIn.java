@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class UserLogIn {
   public WebDriver driver;
 
-  By enterButton = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[span[text()=\"Войти\"]]");
-  By login = By.xpath("//*[@id=\"passp-field-login\"]");
-  By enterAfterLoginButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
-  By password = By.xpath("//*[@id=\"passp-field-passwd\"]");
-  By enterAfterPasswordButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
+  private final By enterButton = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[span[text()=\"Войти\"]]");
+  private final By login = By.xpath("//*[@id=\"passp-field-login\"]");
+  private final By enterAfterLoginButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
+  private final By password = By.xpath("//*[@id=\"passp-field-passwd\"]");
+  private final By enterAfterPasswordButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
 
   public UserLogIn(WebDriver driver) {
     this.driver = driver;

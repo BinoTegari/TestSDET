@@ -12,42 +12,42 @@ public class Letters {
   public WebDriver driver;
   String subjectTheme = "Simbirsoft Тестовое задание. Перетятько";
 
-  By newLetter = By.xpath("//a[@class=\"mail-ComposeButton js-main-action-compose\"]");
-  By sendAdress = By.xpath("//div[@class=\"ComposeRecipients-TopRow\"]//div/div[@class=\"composeYabbles\"]");
-  By subject = By.xpath("//div[@class=\"ComposeSubject\"]//div[contains(@class,'ComposeSubject-Content')]/input");
-  By letterContent = By.xpath("//div[@id=\"cke_1_contents\"]/div[@placeholder=\"Напишите что-нибудь\"]");
-  By sendButton = By.xpath("//div[contains(@class,'ComposeSendButton_desktop')]/button");
-  By letterSubject = By.xpath("//span[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]/span");
+  private final By newLetter = By.xpath("//a[@class=\"mail-ComposeButton js-main-action-compose\"]");
+  private final By sendAdress = By.xpath("//div[@class=\"ComposeRecipients-TopRow\"]//div/div[@class=\"composeYabbles\"]");
+  private final By subject = By.xpath("//div[@class=\"ComposeSubject\"]//div[contains(@class,'ComposeSubject-Content')]/input");
+  private final By letterContent = By.xpath("//div[@id=\"cke_1_contents\"]/div[@placeholder=\"Напишите что-нибудь\"]");
+  private final By sendButton = By.xpath("//div[contains(@class,'ComposeSendButton_desktop')]/button");
+  private final By letterSubject = By.xpath("//span[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]/span");
 
   public Letters(WebDriver driver) {
     this.driver = driver;
   }
 
-  public WebElement newLetter() {
+  private WebElement newLetter() {
     WebDriverWait wait = new WebDriverWait(driver , 20);
     wait.until(ExpectedConditions.elementToBeClickable(newLetter));
     return driver.findElement(newLetter);
   }
 
-  public WebElement sendAdress() {
+  private WebElement sendAdress() {
     WebDriverWait webDriverWait = new WebDriverWait(driver , 20);
     webDriverWait.until(ExpectedConditions.elementToBeClickable(sendAdress));
     return driver.findElement(sendAdress);
   }
 
-  public WebElement subject() {
+  private WebElement subject() {
     return driver.findElement(subject);
   }
 
-  public WebElement letterContent() {
+  private WebElement letterContent() {
     return driver.findElement(letterContent);
   }
 
-  public WebElement sendButton() {
+  private WebElement sendButton() {
     return driver.findElement(sendButton);
   }
 
-  public List<WebElement> letterSubject() {
+  private List<WebElement> letterSubject() {
     return driver.findElements(letterSubject);
   }
 

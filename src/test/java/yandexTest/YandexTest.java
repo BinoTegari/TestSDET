@@ -10,13 +10,13 @@ public class YandexTest extends Base {
     Base base = new Base();
 
     @Before
-    public void Login() {
+    public void login() {
         base.initializeDriver();
         base.user();
     }
 
     @Test
-    public void GetMailSubject() {
+    public void getMailSubject() {
         Letters letters = new Letters(base.driver);
         letters.getSubjectFromLetter();
         letters.sendNewLetter();

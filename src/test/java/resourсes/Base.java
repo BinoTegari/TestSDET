@@ -3,7 +3,6 @@ package resourсes;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
-
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
