@@ -59,8 +59,7 @@ public class Letters {
         count++;
       }
     }
-    String countLetter = "Писем с темой \"Simbirsoft Тестовое задание\" найдено: " + count;
-    return countLetter;
+    return "Писем с темой \"Simbirsoft Тестовое задание\" найдено: " + count;
   }
 
   public void sendNewLetter() {

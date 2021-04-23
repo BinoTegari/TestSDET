@@ -47,13 +47,11 @@ public class Base {
     return (os.contains("mac"));
   }
 
-  public void user() {
+  public void userLogIn() {
     if (this.property == null) {
       System.out.println("config не читается");
       return;
     }
-    driver.get(url);
-    driver.manage().window().maximize();
     UserLogIn UserLogIn = new UserLogIn(driver);
     UserLogIn.enterButton().click();
     UserLogIn.login().sendKeys(login);
@@ -61,7 +59,10 @@ public class Base {
     UserLogIn.password().sendKeys(password);
     UserLogIn.enterAfterPasswordButton().click();
   }
-
+  public void open() {
+    driver.get(url);
+    driver.manage().window().maximize();
+  }
   public Base() {
     this.property = ConfigureService.getInstance().getProperties();
     this.readProperties();

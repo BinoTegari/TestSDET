@@ -12,7 +12,8 @@ public class YandexTest extends Base {
     @Before
     public void login() {
         base.initializeDriver();
-        base.user();
+        base.open();
+        base.userLogIn();
     }
 
     @Test
@@ -21,7 +22,6 @@ public class YandexTest extends Base {
         letters.getSubjectFromLetter();
         letters.sendNewLetter();
     }
-
     @After
     public void close() {
         base.driver.quit();
