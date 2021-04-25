@@ -1,44 +1,49 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserLogIn {
   public WebDriver driver;
 
-  private final By enterButton = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[span[text()=\"Войти\"]]");
-  private final By login = By.xpath("//*[@id=\"passp-field-login\"]");
-  private final By enterAfterLoginButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
-  private final By password = By.xpath("//*[@id=\"passp-field-passwd\"]");
-  private final By enterAfterPasswordButton = By.xpath("//div[@class=\"passp-button passp-sign-in-button\"]/button");
+  @FindBy(how = How.CSS, css = ".button2_theme_mail-white")
+  WebElement enterButton;
+
+  @FindBy(how = How.ID, id = "passp-field-login")
+  WebElement login;
+
+  @FindBy(how = How.CSS, css = ".Button2_type_submit")
+  WebElement submitButton;
+
+  @FindBy(how = How.ID, id = "passp-field-passwd")
+  WebElement password;
 
   public UserLogIn(WebDriver driver) {
     this.driver = driver;
+    PageFactory.initElements(driver , this);
   }
 
-  public WebElement enterButton() {
-    return driver.findElement(enterButton);
+  public void setLogin(String mailLogin) {
+    login.sendKeys(mailLogin);
   }
 
-  public WebElement login() {
-    return driver.findElement(login);
+  public void getEnterButton() {
+    enterButton.click();
   }
 
-  public WebElement enterAfterLoginButton() {
-    return driver.findElement(enterAfterLoginButton);
+  public void getSubmitButton() {
+    submitButton.click();
   }
 
-  public WebElement password() {
+  public void setPassword(String mailPassword) {
     WebDriverWait wait = new WebDriverWait(driver , 20);
     wait.until(ExpectedConditions.elementToBeClickable(password));
-    driver.findElement(password).click();
-    return driver.findElement(password);
-  }
-
-  public WebElement enterAfterPasswordButton() {
-    return driver.findElement(enterAfterPasswordButton);
+    password.sendKeys(mailPassword);
+    password.click();
   }
 }

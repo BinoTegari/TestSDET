@@ -1,75 +1,83 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import resourсes.Base;
+
 import java.util.List;
 
 public class Letters {
   public WebDriver driver;
-  String subjectTheme = "Simbirsoft Тестовое задание. Перетятько";
 
-  private final By newLetter = By.xpath("//a[@class=\"mail-ComposeButton js-main-action-compose\"]");
-  private final By sendAdress = By.xpath("//div[@class=\"ComposeRecipients-TopRow\"]//div/div[@class=\"composeYabbles\"]");
-  private final By subject = By.xpath("//div[@class=\"ComposeSubject\"]//div[contains(@class,'ComposeSubject-Content')]/input");
-  private final By letterContent = By.xpath("//div[@id=\"cke_1_contents\"]/div[@placeholder=\"Напишите что-нибудь\"]");
-  private final By sendButton = By.xpath("//div[contains(@class,'ComposeSendButton_desktop')]/button");
-  private final By letterSubject = By.xpath("//span[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]/span");
+  @FindBy(how = How.CSS, css = ".mail-ComposeButton")
+  WebElement newLetter;
+
+  @FindBy(how = How.XPATH, xpath = "//div[@class=\"ComposeRecipients-TopRow\"]//div/div[@class=\"composeYabbles\"]")
+  WebElement sendAdress;
+
+  @FindBy(how = How.CSS, css = ".ComposeSubject-TextField")
+  WebElement subject;
+
+  @FindBy(how = How.CSS, css = ".cke_editable:not(#cke_pastebin)")
+  WebElement letterContent;
+
+  @FindBy(how = How.CSS, css = ".theme-colorful .ComposeSendButton .button2.button2.button2")
+  WebElement sendButton;
+
+  @FindBy(how = How.CSS, css = ".mail-MessageSnippet.is-unread .mail-MessageSnippet-Item_subject")
+  List<WebElement> letterSubject;
 
   public Letters(WebDriver driver) {
     this.driver = driver;
+    PageFactory.initElements(driver , this);
   }
 
-  private WebElement newLetter() {
+  private void newLetter() {
     WebDriverWait wait = new WebDriverWait(driver , 20);
     wait.until(ExpectedConditions.elementToBeClickable(newLetter));
-    return driver.findElement(newLetter);
+    newLetter.click();
   }
 
-  private WebElement sendAdress() {
+  private void setSendAdress(String mailAdress) {
     WebDriverWait webDriverWait = new WebDriverWait(driver , 20);
     webDriverWait.until(ExpectedConditions.elementToBeClickable(sendAdress));
-    return driver.findElement(sendAdress);
+    sendAdress.sendKeys(mailAdress);
   }
 
-  private WebElement subject() {
-    return driver.findElement(subject);
+  private void setSubject(String subjectTheme) {
+    subject.click();
+    subject.sendKeys(subjectTheme);
   }
 
-  private WebElement letterContent() {
-    return driver.findElement(letterContent);
+  private void letterContent(String searchSubject) {
+    letterContent.click();
+    letterContent.sendKeys(getSubjectFromLetter(searchSubject));
   }
 
-  private WebElement sendButton() {
-    return driver.findElement(sendButton);
+  private void getSendButton() {
+    sendButton.click();
   }
 
-  private List<WebElement> letterSubject() {
-    return driver.findElements(letterSubject);
-  }
-
-  public String getSubjectFromLetter() {
+  public String getSubjectFromLetter(String searchSubject) {
     int count = 0;
 
-    for (int i = 0; i < letterSubject().size(); i++) {
-      if (letterSubject().get(i).getText().equals("Simbirsoft Тестовое задание")) {
+    for (WebElement webElement : letterSubject) {
+      if (webElement.getText().equals(searchSubject)) {
         count++;
       }
     }
     return "Писем с темой \"Simbirsoft Тестовое задание\" найдено: " + count;
   }
 
-  public void sendNewLetter() {
-    newLetter().click();
-    sendAdress().click();
-    sendAdress().sendKeys(Base.getAdress());
-    subject().click();
-    subject().sendKeys(subjectTheme);
-    letterContent().click();
-    letterContent().sendKeys(getSubjectFromLetter());
-    sendButton().click();
+  public void sendNewLetter(String mailAdress , String subjectTheme , String searchSubject) {
+    newLetter();
+    setSendAdress(mailAdress);
+    setSubject(subjectTheme);
+    letterContent(searchSubject);
+    getSendButton();
   }
 }

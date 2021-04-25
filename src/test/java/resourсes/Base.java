@@ -3,6 +3,7 @@ package resourсes;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,10 +16,9 @@ public class Base {
   public WebDriver driver;
   public Properties property;
 
-  private String login;
-  private String password;
+  private String mailLogin;
+  private String mailPassword;
   private String url;
-  private static String adress;
 
   public void initializeDriver() {
     try {
@@ -52,17 +52,19 @@ public class Base {
       System.out.println("config не читается");
       return;
     }
-    UserLogIn UserLogIn = new UserLogIn(driver);
-    UserLogIn.enterButton().click();
-    UserLogIn.login().sendKeys(login);
-    UserLogIn.enterAfterLoginButton().click();
-    UserLogIn.password().sendKeys(password);
-    UserLogIn.enterAfterPasswordButton().click();
+    UserLogIn userLogIn = new UserLogIn(driver);
+    userLogIn.getEnterButton();
+    userLogIn.setLogin(mailLogin);
+    userLogIn.getSubmitButton();
+    userLogIn.setPassword(mailPassword);
+    userLogIn.getSubmitButton();
   }
+
   public void open() {
     driver.get(url);
     driver.manage().window().maximize();
   }
+
   public Base() {
     this.property = ConfigureService.getInstance().getProperties();
     this.readProperties();
@@ -70,12 +72,7 @@ public class Base {
 
   public void readProperties() {
     this.url = property.getProperty("mailUrl");
-    this.login = property.getProperty("mailLogin");
-    this.password = property.getProperty("mailPassword");
-    adress = property.getProperty("mailAdress");
-  }
-
-  public static String getAdress() {
-    return adress;
+    this.mailLogin = property.getProperty("mailLogin");
+    this.mailPassword = property.getProperty("mailPassword");
   }
 }
